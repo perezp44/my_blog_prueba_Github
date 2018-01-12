@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog PRUEBA Github</title>
+    <link>/</link>
+    <description>Recent content on Blog PRUEBA Github</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017</copyright>
+    <lastBuildDate>Tue, 09 Jan 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Municipios españoles con dos nombres</title>
+      <link>/blog/2018/01/09/municipios-espa%C3%B1oles-con-dos-nombres/</link>
+      <pubDate>Tue, 09 Jan 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2018/01/09/municipios-espa%C3%B1oles-con-dos-nombres/</guid>
+      <description>Nuevo post. Voy a hacer un gráfico con los municipios españoles que tienen dos nombres oficiales, por ejemplo: Alicante/Alacant.
+Que ¿por qué? pues resulta que estaba tratando de recordar cómo se hacen mapas en R y vi este post de Suzan Baert. Suzan es belga y en Bélgica hay muchas localidades con 2 nombres, por ejemplo Liège/Luik en French y en Dutch respectivamente, y resulta que … , con sus palabras:</description>
+    </item>
+    
+    <item>
+      <title>Altitud de los pueblos de Teruel (mapas)</title>
+      <link>/blog/2017/12/29/altitud-de-los-pueblos-de-teruel-mapas/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2017/12/29/altitud-de-los-pueblos-de-teruel-mapas/</guid>
+      <description>En el post anterior hice web scrapping bajándome una tabla con los municipios de Teruel y su altitud; pero no hice ningún mapa. Hoy voy a hacerlos.
+Primero hace falta bajarse esta tabla de la Wikipedia con las altitudes y guardarla en un dataframe. Esto lo expliqué en el post anterior así que ya tenemos la tabla con las altitudes almacenada en un dataframe que se llama Teruel.
+Os recordaré que Valdelinares es el pueblo “más alto” de Teruel, seguido de Griegos, pero ¿y mi pueblo?</description>
+    </item>
+    
+    <item>
+      <title>Altitud de los pueblos de Teruel (web scrapping)</title>
+      <link>/blog/2017/12/23/altitud-de-los-pueblos-de-teruel-web-scrapping/</link>
+      <pubDate>Sat, 23 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2017/12/23/altitud-de-los-pueblos-de-teruel-web-scrapping/</guid>
+      <description>Dije que iba a hablar sobre vacas pero se me han adelantado: Os 63 concellos galegos con máis vacas ca persoas, pero lo haré … y el mio será más conceptual… vacas, felicidad, …. 😄
+
+ObjetivoMe ha dado por aprender a hacer web scrapping. Y voy a “scrapear” la tabla con los municipios de Teruel en la wikipedia que puedes ver aquí.</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>/about/</link>
+      <pubDate>Mon, 11 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/about/</guid>
+      <description>About me Me llamo Pedro y llevo unos 3-4 años tratando de aprender R, programación y Data Science (DS). Empece un blog hace dos años (R &amp;amp; Flowers), no escribí mucho pero me gustó la experiencia, así que aquí está R &amp;amp; Flowers IV.
+Mi objetivo con este blog es aprender sobre R y programación. Lo que vaya aprendiendo lo iré subiendo al blog para poder recordarlo luego con mas facilidad.</description>
+    </item>
+    
+    <item>
+      <title>Tuneando el blog</title>
+      <link>/blog/2017/11/27/tuneando-el-blog/</link>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2017/11/27/tuneando-el-blog/</guid>
+      <description>Este post lo utilizaré para ir apuntando lo que aprendo/soluciono al ir tuneando el blog.
+Estoy tuneando el blog usando dos que he visto:
+https://www.mattcraddock.com/http://yoshiharuyamashita.com/ del creador del themehttps://simplystatistics.org/ de Rafa Irizarry, Roger Peng, and Jeff LeekEsta vez creo que medio entenderé como se hacen las web con html, css etc…
+Tengo ya “muchos” post en el cabolo: el de vacas, uno sobre gestionar los kipplings de mi Kindle, otro de temperaturas en Valencia, cesáreas y más.</description>
+    </item>
+    
+    <item>
+      <title>Hello!!</title>
+      <link>/blog/2017/11/26/hello/</link>
+      <pubDate>Sun, 26 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2017/11/26/hello/</guid>
+      <description>Pues la verdad es que ha sido far far más fácil hacer un Hugo blog que un Jekyll blog. Supongo que Yihui Xie habrá ayudado, pero yo también sepo un poco más que hace ¿dos años? Nada, a ver si consigo tunear a mi gusto el blog.
+Aprovecho para dar mi más sincera enhorabuena a Almudena e Ismael por sus dos cachorillos. Guapos-guapos, como la madre. Enhorabuena!!!
+El primer post de verdad será sobre vacas y felicidad.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>/contact/</link>
+      <pubDate>Wed, 09 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>/contact/</guid>
+      <description>If you have any queries/comments/&amp;hellip;, please contact me at pjperez@uv.es by email.
+You can also contact me on:
+ @pjpv4444   @perezp44   </description>
+    </item>
+    
+  </channel>
+</rss>

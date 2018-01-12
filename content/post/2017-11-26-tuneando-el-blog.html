@@ -1,0 +1,70 @@
+---
+title: Tuneando el blog
+author: Pedro J. Pérez
+date: '2017-11-27'
+topics:
+  - blog
+tags:
+  - blog
+slug: tuneando-el-blog
+---
+
+
+
+<p>Este post lo utilizaré para ir apuntando lo que aprendo/soluciono al ir tuneando el blog.</p>
+<p>Estoy tuneando el blog usando dos que he visto:</p>
+<ul>
+<li><a href="https://www.mattcraddock.com/" class="uri">https://www.mattcraddock.com/</a></li>
+<li><a href="http://yoshiharuyamashita.com/" class="uri">http://yoshiharuyamashita.com/</a> del creador del theme</li>
+<li><a href="https://simplystatistics.org/" class="uri">https://simplystatistics.org/</a> de Rafa Irizarry, Roger Peng, and Jeff Leek</li>
+</ul>
+<p>Esta vez creo que medio entenderé como se hacen las web con html, css etc…</p>
+<p>Tengo ya “muchos” post en el cabolo: el de vacas, uno sobre gestionar los kipplings de mi Kindle, otro de temperaturas en Valencia, cesáreas y más. Massa</p>
+<div id="cosas-a-recordar" class="section level2">
+<h2>COSAS a recordar:**</h2>
+<ul>
+<li><p>El logo (el ababol) está en el config-toml en <code>brand</code>. La afoto está en <code>./static/img/logo.jpg</code>, y el trozo de código está en <code>. /layout/partials/brand.html</code>. Me explico, eh!</p></li>
+<li>Cuando haces el deploy en Netlify en las opciones de Build &amp; Deploy has de (lo explica en blogdown):
+<ul>
+<li>Build command: lo he dejado en blanco, creo que podía poner <code>hugo deploy</code></li>
+<li>Publish directory: public (esta es la carpeta del repo de Github q tiene en realidad el blog)</li>
+<li>Production branch: master (lo tengo en la master branch del repo)</li>
+</ul></li>
+<li><p>Yihiu recomienda añadir al archivo <code>.gitignore</code> :</p></li>
+</ul>
+<pre class="yaml"><code>public  
+blogdown
+Thumbs.db  #- para windows users</code></pre>
+<ul>
+<li>A yolo le he visto:</li>
+</ul>
+<pre class="yaml"><code>https://www.shamindras.com/2017/12/31/getting-tuftesque-with-blogging/  
+# Blogdown common gitignore files
+# Source: https://github.com/rbind/yihui/blob/master/.gitignore
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+public
+static/figures
+blogdown
+
+# Source: https://github.com/kbroman/blog/blob/source/.gitignore
+_cache/
+drafts/</code></pre>
+</div>
+<div id="cosas-a-mejorar" class="section level2">
+<h2>COSAS a mejorar:</h2>
+<ul>
+<li><p>Las imágenes las he de poner en <code>/static/</code> pero a mi me gustaría cargarlas directamente de Github, ¿Cómo?</p></li>
+<li><p>Lo mismo con los datos, me gustaría cargarlo desde Github (ahora los datos desde un pkg en Github)</p></li>
+<li><p>Las tablas que hago con kable me salen más feas en el blog que si las kniteo en RStudio</p></li>
+</ul>
+</div>
+<div id="probar" class="section level2">
+<h2>¿Probar?</h2>
+<ul>
+<li><a href="http://kgilds.rbind.io/2017/12/13/images/">[Figuring out images and disqus with blogdown]</a>.</li>
+</ul>
+<p>Bye</p>
+</div>

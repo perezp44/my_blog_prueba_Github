@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Blog PRUEBA Github</title>
+    <link>/tags/blog/</link>
+    <description>Recent content in Blog on Blog PRUEBA Github</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017</copyright>
+    <lastBuildDate>Mon, 27 Nov 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tuneando el blog</title>
+      <link>/blog/2017/11/27/tuneando-el-blog/</link>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2017/11/27/tuneando-el-blog/</guid>
+      <description>Este post lo utilizaré para ir apuntando lo que aprendo/soluciono al ir tuneando el blog.
+Estoy tuneando el blog usando dos que he visto:
+https://www.mattcraddock.com/http://yoshiharuyamashita.com/ del creador del themehttps://simplystatistics.org/ de Rafa Irizarry, Roger Peng, and Jeff LeekEsta vez creo que medio entenderé como se hacen las web con html, css etc…
+Tengo ya “muchos” post en el cabolo: el de vacas, uno sobre gestionar los kipplings de mi Kindle, otro de temperaturas en Valencia, cesáreas y más.</description>
+    </item>
+    
+  </channel>
+</rss>

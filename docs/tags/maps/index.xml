@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maps on Blog PRUEBA Github</title>
+    <link>/tags/maps/</link>
+    <description>Recent content in Maps on Blog PRUEBA Github</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017</copyright>
+    <lastBuildDate>Fri, 29 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/maps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Altitud de los pueblos de Teruel (mapas)</title>
+      <link>/blog/2017/12/29/altitud-de-los-pueblos-de-teruel-mapas/</link>
+      <pubDate>Fri, 29 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2017/12/29/altitud-de-los-pueblos-de-teruel-mapas/</guid>
+      <description>En el post anterior hice web scrapping bajándome una tabla con los municipios de Teruel y su altitud; pero no hice ningún mapa. Hoy voy a hacerlos.
+Primero hace falta bajarse esta tabla de la Wikipedia con las altitudes y guardarla en un dataframe. Esto lo expliqué en el post anterior así que ya tenemos la tabla con las altitudes almacenada en un dataframe que se llama Teruel.
+Os recordaré que Valdelinares es el pueblo “más alto” de Teruel, seguido de Griegos, pero ¿y mi pueblo?</description>
+    </item>
+    
+  </channel>
+</rss>

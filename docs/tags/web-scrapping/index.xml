@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web Scrapping on Blog PRUEBA Github</title>
+    <link>/tags/web-scrapping/</link>
+    <description>Recent content in Web Scrapping on Blog PRUEBA Github</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy; 2017</copyright>
+    <lastBuildDate>Sat, 23 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/tags/web-scrapping/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Altitud de los pueblos de Teruel (web scrapping)</title>
+      <link>/blog/2017/12/23/altitud-de-los-pueblos-de-teruel-web-scrapping/</link>
+      <pubDate>Sat, 23 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/blog/2017/12/23/altitud-de-los-pueblos-de-teruel-web-scrapping/</guid>
+      <description>Dije que iba a hablar sobre vacas pero se me han adelantado: Os 63 concellos galegos con máis vacas ca persoas, pero lo haré … y el mio será más conceptual… vacas, felicidad, …. 😄
+
+ObjetivoMe ha dado por aprender a hacer web scrapping. Y voy a “scrapear” la tabla con los municipios de Teruel en la wikipedia que puedes ver aquí.</description>
+    </item>
+    
+  </channel>
+</rss>
