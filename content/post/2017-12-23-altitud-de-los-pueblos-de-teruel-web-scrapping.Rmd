@@ -1,0 +1,242 @@
+---
+title: Altitud de los pueblos de Teruel (web scrapping)
+author: Pedro J. Pérez
+date: '2017-12-23'
+topics:
+  - municipios
+tags:
+  - web scrapping
+slug: altitud-de-los-pueblos-de-teruel-web-scrapping
+---
+
+
+
+```{r chunk_setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, eval = TRUE )
+```
+
+```{r options_setup, echo = FALSE}
+options(scipen = 999) #- para quitar la notacion científica
+```
+ 
+```{r cargar_pkgs, echo = FALSE}
+library("personal.pjp")
+library("tidyverse")
+```
+
+
+-------------------------
+
+Dije que iba a hablar sobre vacas pero se me han adelantado: [Os 63 concellos galegos con máis vacas ca persoas](http://www.gciencia.com/tolociencia/vacas-persoas-galicia/), pero lo haré ... y el mio será más conceptual... vacas, felicidad, .... `r emo::ji("smile")`
+
+<br>
+
+
+# Objetivo
+
+Me ha dado por aprender a hacer [web scrapping](https://es.wikipedia.org/wiki/Web_scraping). Y voy a "scrapear" la tabla con los municipios de Teruel en la wikipedia que puedes ver [aquí](https://es.wikipedia.org/wiki/Anexo:Municipios_de_la_provincia_de_Teruel).
+
+Con ello podré ver que pueblo de Teruel está más alto. Con lo fácil que sería hacerlo desde la propia wiki: como la tablas es un `<table class="sortable wikitable" border="1">` solo hay que pinchar en la tabla; pero para aprender, obviously, hay que hacerlo con R!!!
+
+
+Ese era el objetivo, pero... me he liado un poco!! y voy a mostrar 2 pkgs de R.
+
+<br>
+
+# 2 "nuevos" packages
+
+Y he visto/utilizado 2 nuevos packages: `webshot` y `magick`
+
+<br>
+
+## webshot package
+
+Resulta que aprender DS es un pozo sin fondo, y he querido mostrar una webshot de la página y digo, ¿por qué no hacer el webshot directamente en R? Pues sí, hay un pkg para eso: `webshot`. Puedes ver su vignette [aquí](https://github.com/wch/webshot). Para instalarlo:
+
+```{r, eval = FALSE}
+# https://github.com/wch/webshot
+install.packages("webshot")
+webshot::install_phantomjs()
+```
+
+Con el pkg `webshot` puedes:  
+
+ - crear webshots en .pdf, .png y .jpg
+ 
+ - decidir el tamaño de la ventana sobre la que haces el shot
+ 
+ - CSS selectors specifying a DOM element to set the clipping rectangle; o sea, elegir que elemento de la página bajarte
+
+
+ Se hace algo como:
+ 
+```{r, eval = FALSE}
+library(webshot)
+webshot("https://es.wikipedia.org/wiki/Anexo:Municipios_de_la_provincia_de_Teruel", "./imagenes/tabla_municipios.png", cliprect = "viewport")
+```
+
+Y sale esto:
+
+```{r echo = TRUE, comment = "",  out.width = '65%', fig.align = 'center'}
+knitr::include_graphics( c("/img/posts/tabla_municipios_Teruel.png") )
+```
+
+<br>
+
+## magick package
+
+Y claro por el camino he vuelto a ver el pkg `magick` que permite manipular imágenes. Puedes ver la vignette [aquí](https://cran.r-project.org/web/packages/magick/vignettes/intro.html#image_io). Es una caña!!!!!
+
+
+
+```{r, eval = FALSE}
+library(magick)
+tabla_teruel <- image_read("/img/posts/tabla_municipios_Teruel.png")
+#mage_info(tabla_teruel)
+#image_fill(tabla_teruel, "blue", "+100+200")
+image_charcoal(tabla_teruel)
+image_negate(tabla_teruel)
+```
+
+Con el código de arriba se aplican varios filtros a la imagen y salen muy chulas, PERO, no consigo que se vean en el blog, así que toca imaginárselas. 
+
+En realidad me gustaría cargar la imagen directamente de un repo de Github `"https://github.com/perezp44/almacen_datos_2018/blob/master/images/tabla_municipios_Teruel.png"` pero no me sale. Con la función `knitr::include_graphics()` sí que he conseguido que se vean las imágenes en el blog poniendo el archivo con la imagen en la carpeta `static` pero para `magick::image_read()` no lo consigo. Ya lo aprenderé y lo explicaré bien, pero hoy no.
+
+
+<br>
+
+
+# Scrapping municipios
+
+Volvemos al objetivo inicial: aprender sobre web scrapping. El impulso para hacer scrapping me lo dio [este post](https://www.r-bloggers.com/building-a-hacker-news-scraper-with-8-lines-of-r-code-using-rvest-library/amp/), pero no lo entiendo bien, así que ya veremos cuando lo aprendo bien; de momento a capón.
+
+
+
+La función `rvest::read_html()` parses the html page of the given url and saves the result as an xml object. 
+
+```{r}
+library("rvest")
+library("tidyverse")
+content <- read_html("https://es.wikipedia.org/wiki/Anexo:Municipios_de_la_provincia_de_Teruel")
+head <- content %>% html_nodes('head') 
+head <- content %>% html_nodes('head') %>% html_text()
+```
+
+Con la función `rvest::html_nodes()` extract pieces out of HTML documents using XPath and css selectors. 
+
+Mirando el código fuente de la página web veo que cada municipio está en un elemento como: `<a href="/wiki/Ababuj" title="Ababuj">Ababuj</a>` dentro de una tabla.
+
+
+Mirando el código fuente se ve que solo hay una tabla, así que con el chunk de abajo podríamos seleccionar lo que queremos, pero lo tendríamos como texto.
+
+```{r, eval = FALSE}
+body_table <- content %>% html_nodes('body')  %>%
+                    html_nodes('table') %>%
+                    html_nodes('td')    %>% html_text()
+```
+
+
+```{r, eval = FALSE}
+body_table <- content %>% html_nodes('body')  %>%
+                    html_nodes('table') %>%
+                    html_table() 
+Teruel <- body_table[[1]]
+```
+
+Ya tenemos la tabla, pero hay varios problemas:
+
+- en la columna de altitudes, los datos tienen un punto que separa los miles, y la función `html_table` lo interpreta como un punto decimal. Esto lo he solucionado con ` html_table(dec = ",")`. Pero luego tocará quitar los puntos de separación de miles.  También hay un problema con los nombres de las columnas: son no estándar, tienen caracteres raros.
+
+```{r}
+body_table <- content %>% html_nodes('body')  %>%
+                    html_nodes('table') %>%
+                    html_table(dec = ",") 
+Teruel <- body_table[[1]]
+```
+
+
+Primero arreglo el problema con el nombre de las variables, pero  a capón con `names()`
+
+
+```{r}
+names(Teruel) <- c("Nombre", "Extension", "Poblacion", "Densidad", "Comarca", "Partido_judicial", "Altitud")
+```
+
+Ahora quito los puntos que señalizan los millares. Los quito con `Altitud = str_replace_all(Altitud,"[[:punct:]]", "")`. A lo bestia.
+
+```{r}
+library(stringr)
+Teruel <- Teruel %>% map(str_trim) %>% as.tibble() #- quita caracteres al final
+Teruel <- Teruel %>% mutate(Altitud = str_replace_all(Altitud,"[[:punct:]]", "")) 
+```
+
+
+Sólo queda ordenar los pueblos por la variable `Altitud`
+
+```{r}
+Teruel <- Teruel %>% mutate(Altitud = as.double(Altitud)) %>%    
+                     arrange(desc(Altitud))
+```
+
+
+Ya podemos imprimir los resultados... y los 4 pueblos/municipios más altos de Teruel son:
+
+```{r}
+library(kableExtra)
+aa <- Teruel %>% select(1,3,5,7) %>%  slice(1:4) 
+knitr::kable(aa, digits = 2, align = "c", caption = "Los 4 municipios de Teruel con más altitud" )
+```
+ 
+Hecho!! Valdelinares con 1692 metros es el campeón. Griegos el segundo. 
+
+Tengo que ir a Griegos!!!!
+ 
+<br>
+
+La tabla más mejor:
+ 
+```{r}
+library(DT)
+aa <- decimales_df_pjp(Teruel, 2)  %>% select(1,7,3,5) #- rtdos con 2 decimales
+datatable(aa, extensions = 'Scroller', options = list( pageLength = 10, deferRender = TRUE,scrollY = 400,scroller = TRUE), rownames = F, filter = "top" )
+```
+ 
+
+<br>
+
+<br>
+
+
+### Otra forma de hacer lo mismo
+
+En lugar de con CSS selector se pueden usar `xpath` para seleccionar las partes de la pagina web que quieres bajar. Resulta que con el **CSS selector** vi que la `xpath` de la tabla es: `/html/body/div[3]/div[3]/div[4]/div/table`. Sí, de momento para mi también es pura magia.
+
+
+```{r, eval = FALSE}
+url <- 'https://es.wikipedia.org/wiki/Anexo:Municipios_de_la_provincia_de_Teruel'
+Teruel <- url %>%
+  read_html() %>%
+  html_nodes(xpath='/html/body/div[3]/div[3]/div[4]/div/table') %>%
+  html_table(dec = ",") 
+Teruel <- Teruel[[1]]
+```
+
+<br>
+
+
+# Entendiendo lo que he hecho
+
+Pues he hecho web scrapping. He bajado una tabla de la wikipedia y me la he traído a R como un dataframe.
+
+Las partes quieres bajar se pueden seleccionar con `CSS selectors` o con `xpaths`
+
+
+He conseguido coger la tabla pero a capón, vamos que no me entero mucho ... aún; así que algún día tendré que leer la [vignette de rvest](https://github.com/hadley/rvest) y de allí te lleva  a este [tutorial sobre CSS selectors](http://flukeout.github.io/). También habrá que mirar `vignette("selectorgadget")` 
+
+
+**P.S:** Al subir el post a [R & Flowers II](https://rflowers2.netlify.com/) resulta que  no se veían las imágenes y lo he medio solucionado con [esto](https://github.com/rstudio/blogdown/issues/45), concretamente con el comentario de `yihiu`.
+Yo quería cargar la imagen desde un repo de Github pero al final he desistido y lo he puesto en la carpeta `/static/img/posts/` del blog, para luego referenciarla así:
+
+```{r echo = TRUE, eval = FALSE, comment = "",  out.width = '65%', fig.align = 'center'}
+knitr::include_graphics( c("/img/posts/tabla_municipios_Teruel.png) )
+```
